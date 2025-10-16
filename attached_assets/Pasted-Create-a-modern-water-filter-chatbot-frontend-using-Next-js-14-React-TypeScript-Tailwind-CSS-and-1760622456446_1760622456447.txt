@@ -1,0 +1,111 @@
+Create a modern water filter chatbot frontend using Next.js 14, React, TypeScript, Tailwind CSS, and Shadcn/ui with the following specifications:
+
+PROJECT SETUP:
+- Initialize Next.js 14 with TypeScript and App Router
+- Install dependencies: shadcn-ui, lucide-react, tailwindcss, react-markdown
+- Configure Tailwind with custom water-themed color palette:
+  * Primary: cyan-500 to cyan-600 (clean water blue)
+  * Accent: teal-500 to teal-600 (fresh aqua)
+  * Background: slate-50 (light clean surface)
+  * Text: slate-900 (readable dark)
+  * Bot message background: cyan-50/blue-50
+  * User message background: teal-500 with white text
+
+DESIGN REQUIREMENTS:
+1. Full-height responsive layout with gradient background (from cyan-50 via blue-50 to teal-50)
+2. Modern glass-morphism card design with backdrop-blur and subtle shadows
+3. Custom fonts: Inter for UI, Poppins for headings
+4. Water droplet or filter icon in header
+5. Smooth animations for message appearance and typing indicators
+6. Mobile-first responsive design
+
+CHAT INTERFACE FEATURES:
+1. Header section with:
+   - "Neer Sahayak" branding with water droplet icon
+   - Subtitle: "Your Water Filter Expert Assistant"
+   - Clean, modern typography with gradient text effect
+
+2. Chat area with:
+   - Auto-scrolling message list with smooth scroll behavior
+   - Alternating message bubbles (left for bot, right for user)
+   - Avatar icons (water drop for bot, user icon for user)
+   - Timestamp for each message
+   - Typing indicator with animated dots when bot is responding
+   - Loading placeholder with skeleton animation before streaming starts
+
+3. Input section with:
+   - Large textarea with placeholder "Ask about water filters..."
+   - Send button with paper plane icon
+   - Character limit indicator
+   - Disabled state during API calls
+   - Modern focus states with cyan/teal ring
+
+4. Streaming response handling:
+   - Display loading skeleton placeholder immediately on send
+   - Stream response character-by-character for natural feel
+   - Parse and render markdown in responses (bold, bullets, etc.)
+   - Auto-scroll to bottom as content streams in
+   - Smooth fade-in animation for each new message
+
+API INTEGRATION:
+- Backend URL: http://localhost:8000 (make it configurable via environment variable)
+- POST endpoint: /api/chat
+- Request body: { "query": "user message" }
+- Response format: { "answer": "bot response", "status": "success", "context_used": true, "num_sources": 2 }
+- Handle errors gracefully with user-friendly messages
+- Show retry button on failure
+
+COMPONENTS TO CREATE:
+1. app/page.tsx - Main chat interface
+2. components/ChatMessage.tsx - Individual message component with markdown support
+3. components/ChatInput.tsx - Input area with send button
+4. components/TypingIndicator.tsx - Animated dots for loading state
+5. components/MessageSkeleton.tsx - Loading placeholder
+6. lib/api.ts - API client for backend communication
+7. lib/hooks/useChat.ts - Custom hook for chat state management
+
+STYLING DETAILS:
+- Use Tailwind CSS utility classes
+- Shadcn/ui components: Card, Button, ScrollArea, Avatar, Badge
+- Custom CSS for:
+  * Gradient text effects on header
+  * Glass-morphism on chat container
+  * Smooth scroll behavior
+  * Message fade-in animations
+  * Typing indicator pulse animation
+
+ACCESSIBILITY:
+- Proper ARIA labels for all interactive elements
+- Keyboard navigation support (Enter to send, Esc to clear)
+- Focus management for input field
+- Screen reader friendly message announcements
+
+PERFORMANCE OPTIMIZATIONS:
+- Use React.memo for message components
+- Implement virtual scrolling for long conversations
+- Debounce input events
+- Lazy load markdown parser
+- Optimize re-renders with useCallback and useMemo
+
+EXAMPLE MESSAGE FORMATTING:
+- Parse bullet points with proper indentation
+- Bold text for product names and prices
+- Clean line spacing for readability
+- Clickable links in blue with underline on hover
+
+STARTER MESSAGES (display 3 suggestion chips):
+- "What's the best RO purifier for high TDS water?"
+- "How often should I replace my water filter?"
+- "Compare AquaPure vs ClearFlow purifiers"
+
+Generate complete, production-ready code with:
+- Proper TypeScript types
+- Error boundaries
+- Loading states
+- Empty states
+- Responsive breakpoints
+- Clean code structure
+- Inline comments for complex logic
+- Environment variable configuration
+
+Make it beautiful, fast, and user-friendly with water-themed colors and smooth animations throughout.
