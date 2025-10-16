@@ -86,11 +86,13 @@ export function useChat({ apiEndpoint = '/api/chat' }: UseChatOptions = {}) {
     setMessages(prev => [...prev, botMessage]);
 
     try {
-      const response = await apiRequest<{ answer: string; status: string }>(
+      const res = await apiRequest(
         'POST',
         apiEndpoint,
         { query: content.trim() }
       );
+
+      const response = await res.json() as { answer: string; status: string };
 
       if (response.answer) {
         simulateStreaming(response.answer, botMessageId);
